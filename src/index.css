@@ -1,0 +1,117 @@
+/* ==================== Reset & Base ==================== */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --bg: #0a0a0f;
+  --bg-card: rgba(255, 255, 255, 0.03);
+  --bg-card-hover: rgba(255, 255, 255, 0.06);
+  --cyan: #00d4ff;
+  --purple: #a855f7;
+  --pink: #f472b6;
+  --teal: #22d3ee;
+  --text: #c8c8d0;
+  --text-bright: #e0e0e0;
+  --text-dim: #6b7280;
+  --text-faint: #4b5563;
+  --border: rgba(255, 255, 255, 0.06);
+  --border-active: rgba(0, 212, 255, 0.2);
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+  --font-sans: 'Inter', 'Noto Sans SC', -apple-system, sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ==================== Scrollbar ==================== */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.2); }
+
+/* ==================== Utility ==================== */
+.section-title {
+  font-family: var(--font-mono);
+  font-size: 1.5rem;
+  color: var(--text-bright);
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+
+.section-subtitle {
+  text-align: center;
+  color: var(--text-dim);
+  font-size: 0.8rem;
+  font-family: var(--font-mono);
+  margin-bottom: 2.5rem;
+}
+
+/* ==================== Animations ==================== */
+@keyframes blink { 50% { opacity: 0; } }
+@keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 8px rgba(0, 212, 255, 0.2); }
+  50% { box-shadow: 0 0 20px rgba(0, 212, 255, 0.4); }
+}
+@keyframes scanline {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100vh); }
+}
+@keyframes dash-flow {
+  to { stroke-dashoffset: 0; }
+}
+
+/* ==================== Card Styles ==================== */
+.glass-card {
+  background: var(--bg-card);
+  backdrop-filter: blur(16px);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  transition: all 0.3s ease;
+}
+
+.glass-card:hover {
+  background: var(--bg-card-hover);
+  border-color: var(--border-active);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(0, 212, 255, 0.06);
+}
+
+/* ==================== Neon Text ==================== */
+.neon-cyan {
+  color: var(--cyan);
+  text-shadow: 0 0 8px rgba(0, 212, 255, 0.4);
+}
+
+.neon-purple {
+  color: var(--purple);
+  text-shadow: 0 0 8px rgba(168, 85, 247, 0.4);
+}
+
+/* ==================== Tags ==================== */
+.tag {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-family: var(--font-mono);
+  padding: 0.15rem 0.5rem;
+  border-radius: 4px;
+  background: rgba(0, 212, 255, 0.08);
+  color: var(--cyan);
+  border: 1px solid rgba(0, 212, 255, 0.15);
+}
+
+/* ==================== Responsive ==================== */
+@media (max-width: 860px) {
+  .layout-root { flex-direction: column !important; gap: 0 !important; padding: 0 1rem !important; }
+  .layout-sidebar { width: 100% !important; position: relative !important; height: auto !important; overflow: visible !important; padding-top: 1.5rem !important; padding-bottom: 1rem !important; }
+  .layout-main { width: 100% !important; padding-top: 1rem !important; }
+}
+
+.layout-sidebar::-webkit-scrollbar { display: none; }
