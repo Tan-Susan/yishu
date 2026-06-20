@@ -148,7 +148,7 @@ function SkillTree() {
       <h2 style={{
         fontFamily: "var(--font-mono)", fontSize: "1.1rem", color: "var(--text-bright)",
         marginBottom: "1rem",
-      }}><span className="neon-cyan">{"<"}</span> 技能树 <span className="neon-cyan">{"/>"}</span></h2>
+      }}><span className="neon-cyan">技能树</span></h2>
 
       <div style={{ display: "flex", flexDirection: "column", gap: "0.8rem" }}>
         {skillsData.branches.map((branch) => (
@@ -159,7 +159,7 @@ function SkillTree() {
             <div style={{
               fontFamily: "var(--font-mono)", fontSize: "0.82rem", color: branch.color,
               marginBottom: "0.7rem", textShadow: `0 0 6px ${branch.color}33`,
-            }}>{branch.icon} [{branch.name}]</div>
+            }}>{branch.icon} {branch.name}</div>
 
             <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
               {branch.skills.map((skill) => (
@@ -331,8 +331,8 @@ function ProjectDetailPage({ project, company, onBack }) {
         background: "rgba(255,255,255,0.02)", borderRadius: "14px",
         border: "1px solid var(--border)", padding: "1.5rem 2rem", marginBottom: "1.5rem",
       }}>
-        <div style={{ fontSize: "0.72rem", color: "var(--text-faint)", fontFamily: "var(--font-mono)", marginBottom: "0.8rem" }}>
-          // 项目概述
+        <div style={{ fontSize: "0.72rem", color: "var(--text-faint)", marginBottom: "0.8rem", fontFamily: "var(--font-mono)" }}>
+          项目概述
         </div>
         <div style={{ fontSize: "0.85rem", color: "var(--text)", lineHeight: 1.8 }}>
           {project.description}
@@ -345,8 +345,8 @@ function ProjectDetailPage({ project, company, onBack }) {
         border: "1px solid var(--border)", padding: "1.5rem 2rem",
         minHeight: "200px",
       }}>
-        <div style={{ fontSize: "0.72rem", color: "var(--text-faint)", fontFamily: "var(--font-mono)", marginBottom: "0.8rem" }}>
-          // 详细设计
+        <div style={{ fontSize: "0.72rem", color: "var(--text-faint)", marginBottom: "0.8rem", fontFamily: "var(--font-mono)" }}>
+          详细设计
         </div>
         {project.detail ? (
           <div style={{
@@ -379,9 +379,9 @@ function Experience({ onProjectClick }) {
       <h2 style={{
         fontFamily: "var(--font-mono)", fontSize: "1.3rem", color: "var(--text-bright)",
         marginBottom: "0.4rem",
-      }}><span className="neon-purple">{"<"}</span> 职业副本 <span className="neon-purple">{"/>"}</span></h2>
-      <p style={{ color: "var(--text-dim)", fontSize: "0.78rem", fontFamily: "var(--font-mono)", marginBottom: "2rem" }}>
-        // 点击展开查看成就，点击项目进入详情
+      }}><span className="neon-purple">职业副本</span></h2>
+      <p style={{ color: "var(--text-dim)", fontSize: "0.78rem", marginBottom: "2rem" }}>
+        点击展开查看成就，点击项目进入详情
       </p>
       <ExperienceList expanded={expanded} setExpanded={setExpanded} onProjectClick={onProjectClick} />
     </section>
@@ -398,9 +398,9 @@ function StandaloneProjects() {
       <h2 style={{
         fontFamily: "var(--font-mono)", fontSize: "1.3rem", color: "var(--text-bright)",
         marginBottom: "0.4rem",
-      }}><span style={{ color: "var(--teal)" }}>{"<"}</span> 个人项目 <span style={{ color: "var(--teal)" }}>{"/>"}</span></h2>
-      <p style={{ color: "var(--text-dim)", fontSize: "0.78rem", fontFamily: "var(--font-mono)", marginBottom: "1.5rem" }}>
-        // 独立项目与创作
+      }}><span style={{ color: "var(--teal)" }}>个人项目</span></h2>
+      <p style={{ color: "var(--text-dim)", fontSize: "0.78rem", marginBottom: "1.5rem" }}>
+        独立项目与创作
       </p>
 
       {projects.map((proj, i) => (
@@ -534,7 +534,7 @@ export default function App() {
             color: "var(--text-faint)", fontSize: "0.68rem", fontFamily: "var(--font-mono)",
             borderTop: "1px solid var(--border)",
           }}>
-            {"<"} Built with React + Vite {" | "} Deployed on GitHub Pages {"/>"}
+            Built with React + Vite · Deployed on GitHub Pages
           </footer>
         </main>
       </div>
