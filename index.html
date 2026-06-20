@@ -12,6 +12,32 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <script type="module">
+      import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+      mermaid.initialize({
+        startOnLoad: false,
+        theme: 'dark',
+        themeVariables: {
+          primaryColor: '#1a1a2e',
+          primaryTextColor: '#e0e0e0',
+          primaryBorderColor: '#00d4ff',
+          lineColor: '#00d4ff',
+          secondaryColor: '#a855f7',
+          tertiaryColor: '#22d3ee',
+          background: '#0a0a0f',
+          mainBkg: '#1a1a2e',
+          nodeBorder: '#00d4ff',
+          clusterBkg: 'rgba(0,212,255,0.05)',
+          clusterBorder: 'rgba(0,212,255,0.2)',
+          titleColor: '#e0e0e0',
+          edgeLabelBackground: '#0a0a0f',
+          nodeTextColor: '#e0e0e0',
+        },
+        flowchart: { curve: 'basis', htmlLabels: true },
+        sequence: { mirrorActors: false },
+      });
+      window.mermaid = mermaid;
+    </script>
   </head>
   <body>
     <div id="root"></div>
