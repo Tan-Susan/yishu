@@ -1,0 +1,48 @@
+{
+  "branches": [
+    {
+      "name": "数据产品",
+      "color": "#00d4ff",
+      "icon": "📊",
+      "skills": [
+        { "id": "data-modeling", "name": "数据建模", "desc": "指标体系搭建、维度建模、数据治理" },
+        { "id": "analytics", "name": "数据分析", "desc": "损益归因、渠道分析、异常检测" },
+        { "id": "bi", "name": "BI 产品", "desc": "报表体系、可视化看板、自助查询" },
+        { "id": "data-governance", "name": "数据治理", "desc": "数据质量、元数据管理、成本分摊" }
+      ]
+    },
+    {
+      "name": "AI 产品",
+      "color": "#a855f7",
+      "icon": "🤖",
+      "skills": [
+        { "id": "rag", "name": "RAG + LLM", "desc": "企业知识库问答、AI 助手产品" },
+        { "id": "prompt", "name": "Prompt Eng", "desc": "提示词工程、AI 交互设计" },
+        { "id": "ai-agent", "name": "AI Agent", "desc": "智能体搭建、异常报告自动触达" },
+        { "id": "aigc", "name": "AIGC 应用", "desc": "AI 素材生成、全流程AIGC开发" }
+      ]
+    },
+    {
+      "name": "财务产品",
+      "color": "#22d3ee",
+      "icon": "💰",
+      "skills": [
+        { "id": "billing", "name": "计费系统", "desc": "模块化计费、多场景配置、效能提升50%" },
+        { "id": "settlement", "name": "结算系统", "desc": "自动化结算、第三方支付对接" },
+        { "id": "cost-mgmt", "name": "成本管理", "desc": "履约成本、物流成本管报、动因分析" },
+        { "id": "pnl", "name": "损益分析", "desc": "损益测算、预警中心、预测准确率90%+" }
+      ]
+    },
+    {
+      "name": "通用能力",
+      "color": "#f472b6",
+      "icon": "🌍",
+      "skills": [
+        { "id": "intl", "name": "国际化", "desc": "东南亚、拉美新兴市场财税数字化" },
+        { "id": "pm", "name": "产品管理", "desc": "需求分析、项目推进、跨团队协作" },
+        { "id": "supply-chain", "name": "供应链", "desc": "电商、物流、仓储全链路理解" },
+        { "id": "english", "name": "英语", "desc": "流利英文，跨国团队沟通无障碍" }
+      ]
+    }
+  ]
+}
