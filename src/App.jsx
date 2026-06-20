@@ -457,30 +457,6 @@ export default function App() {
   };
   const goBack = () => setView(null);
 
-  // Easter egg
-  useEffect(() => {
-    let buf = "";
-    const handler = (e) => {
-      buf += e.key.toLowerCase();
-      if (buf.length > 10) buf = buf.slice(-10);
-      if (buf.includes("hire")) {
-        buf = "";
-        const o = document.createElement("div");
-        o.style.cssText = "position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;background:rgba(10,10,15,0.92);cursor:pointer";
-        o.innerHTML = `<div style="text-align:center;animation:float 2s ease-in-out infinite">
-          <div style="font-size:4rem;margin-bottom:1rem">🎉</div>
-          <div style="font-family:var(--font-mono);font-size:1.5rem;color:var(--cyan);text-shadow:0 0 20px rgba(0,212,255,0.5);margin-bottom:0.5rem">成就解锁！</div>
-          <div style="font-size:0.9rem;color:var(--text-dim);max-width:320px;line-height:1.6">恭喜你发现了隐藏成就！<br/>这说明你是一个注重细节的人。<br/>期待与您的合作 ✨</div>
-          <div style="margin-top:1.5rem;font-size:0.7rem;color:var(--text-faint);font-family:var(--font-mono)">点击任意处关闭</div>
-        </div>`;
-        o.onclick = () => o.remove();
-        document.body.appendChild(o);
-        setTimeout(() => o.remove(), 6000);
-      }
-    };
-    window.addEventListener("keydown", handler);
-    return () => window.removeEventListener("keydown", handler);
-  }, []);
 
   return (
     <div style={{
@@ -510,12 +486,6 @@ export default function App() {
             <SkillTree />
           </div>
 
-          <div style={{
-            marginTop: "2rem", textAlign: "center", fontSize: "0.65rem",
-            color: "var(--text-faint)", fontFamily: "var(--font-mono)",
-          }}>
-            TIP: 键盘输入 <span style={{ color: "var(--purple)", background: "rgba(168,85,247,0.1)", padding: "0.1rem 0.35rem", borderRadius: "3px" }}>hire</span> 解锁彩蛋
-          </div>
         </aside>
 
         {/* ===== RIGHT PANEL ===== */}
