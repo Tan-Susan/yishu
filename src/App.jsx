@@ -227,56 +227,32 @@ function ExperienceList({ expanded, setExpanded, onProjectClick }) {
             </div>
             <div style={{ fontSize: "0.8rem", color: "var(--text-dim)", marginTop: "0.6rem", lineHeight: 1.7 }}>{exp.scope}</div>
 
-            {/* Expandable */}
-            <div style={{ maxHeight: expanded === i ? "2000px" : "0", overflow: "hidden", transition: "max-height 0.5s ease" }}>
-              <div style={{ marginTop: "1rem", paddingTop: "1rem", borderTop: "1px solid var(--border)" }}>
-                <div style={{ fontSize: "0.72rem", color: "var(--text-faint)", marginBottom: "0.8rem", fontFamily: "var(--font-mono)" }}>
-                  成就解锁 ({exp.achievements.length}):
-                </div>
-                {exp.achievements.map((ach, j) => (
-                  <div key={j} style={{ display: "flex", gap: "0.8rem", marginBottom: "0.9rem", alignItems: "flex-start" }}>
-                    <span style={{ fontSize: "1.2rem", lineHeight: 1, flexShrink: 0 }}>{ach.icon}</span>
-                    <div>
-                      <div style={{ fontFamily: "var(--font-mono)", fontSize: "0.82rem", color: exp.color, marginBottom: "0.2rem" }}>{ach.title}</div>
-                      <div style={{ fontSize: "0.78rem", color: "var(--text)", lineHeight: 1.6 }}>{ach.desc}</div>
-                      <div style={{ display: "flex", gap: "0.35rem", marginTop: "0.35rem", flexWrap: "wrap" }}>
-                        {ach.tags?.map(t => <span key={t} className="tag" style={{ background: `${exp.color}0d`, color: exp.color, borderColor: `${exp.color}22` }}>{t}</span>)}
+            {/* Expandable: Project list */}
+            {exp.projects && exp.projects.length > 0 && (
+              <div style={{ maxHeight: expanded === i ? "2000px" : "0", overflow: "hidden", transition: "max-height 0.5s ease" }}>
+                <div style={{ marginTop: "1rem", paddingTop: "1rem", borderTop: "1px solid var(--border)" }}>
+                  <div style={{ fontSize: "0.72rem", color: "var(--text-faint)", marginBottom: "0.8rem", fontFamily: "var(--font-mono)" }}>
+                    项目 ({exp.projects.length})
+                  </div>
+                  <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: "0.5rem" }}>
+                    {exp.projects.map((proj, pi) => (
+                      <div key={pi} onClick={(e) => { e.stopPropagation(); onProjectClick(proj, exp); }}
+                        style={{
+                          background: "rgba(255,255,255,0.015)", borderRadius: "10px",
+                          border: `1px solid ${proj.color}12`, padding: "0.75rem 1rem",
+                          cursor: "pointer", transition: "all 0.3s ease",
+                        }}
+                        onMouseEnter={e => { e.currentTarget.style.borderColor = `${proj.color}35`; e.currentTarget.style.background = "rgba(255,255,255,0.035)"; e.currentTarget.style.transform = "translateY(-1px)"; }}
+                        onMouseLeave={e => { e.currentTarget.style.borderColor = `${proj.color}12`; e.currentTarget.style.background = "rgba(255,255,255,0.015)"; e.currentTarget.style.transform = "translateY(0)"; }}
+                      >
+                        <div style={{ fontFamily: "var(--font-mono)", fontSize: "0.82rem", color: "var(--text-bright)", marginBottom: "0.2rem" }}>{proj.name}</div>
+                        <div style={{ fontSize: "0.7rem", color: proj.color, fontFamily: "var(--font-mono)" }}>{proj.subtitle}</div>
                       </div>
-                    </div>
+                    ))}
                   </div>
-                ))}
-
-                {/* Nested Projects */}
-                {exp.projects && exp.projects.length > 0 && (
-                  <div style={{ marginTop: "1.2rem", paddingTop: "1rem", borderTop: "1px solid var(--border)" }}>
-                    <div style={{ fontSize: "0.72rem", color: "var(--text-faint)", marginBottom: "0.8rem", fontFamily: "var(--font-mono)" }}>
-                      关联项目 ({exp.projects.length}):
-                    </div>
-                    <div style={{ display: "flex", flexDirection: "column", gap: "0.6rem" }}>
-                      {exp.projects.map((proj, pi) => (
-                        <div key={pi} onClick={(e) => { e.stopPropagation(); onProjectClick(proj, exp); }}
-                          style={{
-                            background: "rgba(255,255,255,0.015)", borderRadius: "10px",
-                            border: `1px solid ${proj.color}12`, padding: "0.9rem 1.2rem",
-                            cursor: "pointer", transition: "all 0.3s ease",
-                          }}
-                          onMouseEnter={e => { e.currentTarget.style.borderColor = `${proj.color}35`; e.currentTarget.style.background = "rgba(255,255,255,0.035)"; }}
-                          onMouseLeave={e => { e.currentTarget.style.borderColor = `${proj.color}12`; e.currentTarget.style.background = "rgba(255,255,255,0.015)"; }}
-                        >
-                          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                            <div>
-                              <span style={{ fontFamily: "var(--font-mono)", fontSize: "0.85rem", color: "var(--text-bright)" }}>{proj.name}</span>
-                              <span style={{ fontSize: "0.72rem", color: proj.color, marginLeft: "0.6rem", fontFamily: "var(--font-mono)" }}>{proj.subtitle}</span>
-                            </div>
-                            <span style={{ fontSize: "0.75rem", color: "var(--text-faint)", fontFamily: "var(--font-mono)" }}>→</span>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                )}
+                </div>
               </div>
-            </div>
+            )}
           </div>
         </div>
       ))}
@@ -313,13 +289,33 @@ function useMermaid(containerRef) {
 // ==================== Right Panel: Project Detail Page ====================
 function renderDetail(detail) {
   if (!detail) return null;
+  const sectionHeaders = ["项目目标", "成功指标", "项目难点", "方案设计", "结果与影响"];
   const parts = detail.split(/(```mermaid[\s\S]*?```)/g);
   return parts.map((part, i) => {
     const m = part.match(/^```mermaid\n?([\s\S]*?)```$/);
     if (m) {
-      return <div key={i} className="mermaid-src" style={{ margin: "1rem 0", textAlign: "center" }}>{m[1].trim()}</div>;
+      return <div key={i} className="mermaid-src" style={{ margin: "1.2rem 0", textAlign: "center" }}>{m[1].trim()}</div>;
     }
-    return part.trim() ? <p key={i} style={{ fontSize: "0.85rem", color: "var(--text)", lineHeight: 1.8, marginBottom: "0.8rem" }}>{part.trim()}</p> : null;
+    if (!part.trim()) return null;
+    // Split into paragraphs and style section headers
+    const paragraphs = part.trim().split("\n\n");
+    return paragraphs.map((p, j) => {
+      const lines = p.split("\n").filter(l => l.trim());
+      return lines.map((line, k) => {
+        const isHeader = sectionHeaders.includes(line.trim());
+        if (isHeader) {
+          return <div key={`${i}-${j}-${k}`} style={{
+            fontFamily: "var(--font-mono)", fontSize: "0.82rem", color: "var(--cyan)",
+            marginTop: k === 0 && j > 0 ? "1.2rem" : "0.3rem", marginBottom: "0.3rem",
+            textShadow: "0 0 6px rgba(0,212,255,0.2)",
+          }}>{line.trim()}</div>;
+        }
+        return <p key={`${i}-${j}-${k}`} style={{
+          fontSize: "0.85rem", color: "var(--text)", lineHeight: 1.8,
+          marginBottom: "0.5rem", marginTop: 0,
+        }}>{line.trim()}</p>;
+      });
+    });
   });
 }
 
