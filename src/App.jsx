@@ -71,15 +71,6 @@ function ProfileCard() {
         pointerEvents: "none",
       }} />
 
-      {/* Avatar */}
-      <div style={{
-        width: "80px", height: "80px", borderRadius: "50%", margin: "0 auto 1.2rem",
-        background: "linear-gradient(135deg, #00d4ff, #a855f7)",
-        display: "flex", alignItems: "center", justifyContent: "center",
-        fontSize: "1.8rem", boxShadow: "0 0 28px rgba(0,212,255,0.25)",
-        fontFamily: "var(--font-mono)", fontWeight: 700, color: "#fff", position: "relative",
-      }}>CY</div>
-
       <h1 style={{
         fontFamily: "var(--font-mono)", fontSize: "1.7rem", color: "var(--text-bright)",
         marginBottom: "0.3rem", letterSpacing: "0.05em", position: "relative",
