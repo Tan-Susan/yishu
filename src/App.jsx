@@ -289,7 +289,7 @@ function useMermaid(containerRef) {
 // ==================== Right Panel: Project Detail Page ====================
 function renderDetail(detail) {
   if (!detail) return null;
-  const sectionHeaders = ["项目目标", "成功指标", "项目难点", "方案设计", "结果与影响"];
+  const sectionHeaders = ["项目目标", "成功指标", "项目难点", "方案设计", "结果与影响", "项目成果", "系统架构"];
   const parts = detail.split(/(```mermaid[\s\S]*?```)/g);
   return parts.map((part, i) => {
     const m = part.match(/^```mermaid\n?([\s\S]*?)```$/);
