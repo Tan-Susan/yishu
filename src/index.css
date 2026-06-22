@@ -2,9 +2,9 @@
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
 :root {
-  --bg: #0a0a0f;
-  --bg-card: rgba(255, 255, 255, 0.03);
-  --bg-card-hover: rgba(255, 255, 255, 0.06);
+  --bg: rgba(10, 10, 15, 0.85);
+  --bg-card: rgba(10, 10, 15, 0.65);
+  --bg-card-hover: rgba(10, 10, 15, 0.75);
   --cyan: #00d4ff;
   --purple: #a855f7;
   --pink: #f472b6;
@@ -13,8 +13,8 @@
   --text-bright: #e0e0e0;
   --text-dim: #6b7280;
   --text-faint: #4b5563;
-  --border: rgba(255, 255, 255, 0.06);
-  --border-active: rgba(0, 212, 255, 0.2);
+  --border: rgba(255, 255, 255, 0.08);
+  --border-active: rgba(0, 212, 255, 0.25);
   --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
   --font-sans: 'Inter', 'Noto Sans SC', -apple-system, sans-serif;
 }
@@ -22,12 +22,26 @@
 html { scroll-behavior: smooth; }
 
 body {
-  background: var(--bg);
+  background-color: #0a0a0f;
+  background-image: url('/yishu/images/bg.jpg');
+  background-size: cover;
+  background-position: center center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
   color: var(--text);
   font-family: var(--font-sans);
   line-height: 1.6;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 10, 15, 0.55);
+  z-index: 0;
+  pointer-events: none;
 }
 
 /* ==================== Scrollbar ==================== */
