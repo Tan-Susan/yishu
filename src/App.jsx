@@ -513,17 +513,11 @@ function StandaloneProjects() {
               </span>
             ))}
           </div>
-          {proj.metrics && (
-            <div style={{ marginTop: "0.8rem", fontFamily: "var(--font-mono)", fontSize: "0.72rem", color: "var(--text-faint)" }}>
-              {proj.metrics}
-            </div>
-          )}
           {proj.images && proj.images.length > 0 && (
             <div style={{ marginTop: "1rem" }}>
               {proj.images.map((img, idx) => (
                 <div key={idx} style={{ borderRadius: "12px", overflow: "hidden", border: "1px solid var(--border)", background: "rgba(0,0,0,0.2)", marginBottom: idx < proj.images.length - 1 ? "0.8rem" : 0 }}>
                   <img src={img.src || img} alt={img.alt || proj.name} style={{ width: "100%", height: "auto", display: "block" }} loading="lazy" />
-                  {img.caption && <div style={{ padding: "0.5rem 0.8rem", fontSize: "0.72rem", color: "var(--text-dim)", fontFamily: "var(--font-mono)", borderTop: "1px solid var(--border)" }}>{img.caption}</div>}
                 </div>
               ))}
             </div>
@@ -533,7 +527,6 @@ function StandaloneProjects() {
     </section>
   );
 }
-
 // ==================== App (Two-Column Layout) ====================
 export default function App() {
   // View state: null = list view, { project, company } = detail view
