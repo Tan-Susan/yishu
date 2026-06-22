@@ -12,7 +12,9 @@
         "动态天气引擎、体力/体温双数值系统、Roguelike随机事件库"
       ],
       "tags": ["AIGC", "Cursor", "游戏开发", "微信小程序"],
+      "images": [{"src": "/yishu/images/minigames.png", "caption": "《最强登山家》游戏截图"}],
       "metrics": "25场景 · 11天气状态 · 全AIGC美术"
     }
   ]
 }
+
