@@ -1,6 +1,17 @@
 {
   "branches": [
     {
+      "name": "财务产品",
+      "color": "#22d3ee",
+      "icon": "💰",
+      "skills": [
+        { "id": "billing", "name": "计费系统", "desc": "模块化计费、多场景配置、效能提升50%" },
+        { "id": "settlement", "name": "结算系统", "desc": "自动化结算、第三方支付对接" },
+        { "id": "cost-mgmt", "name": "成本管理", "desc": "财务管报、动因分析、损益测算" },
+        { "id": "pnl", "name": "损益分析", "desc": "归因分析，策略仿真" }
+      ]
+    },
+    {
       "name": "数据产品",
       "color": "#00d4ff",
       "icon": "📊",
@@ -20,17 +31,6 @@
         { "id": "prompt", "name": "Prompt Eng", "desc": "提示词工程、AI 交互设计" },
         { "id": "ai-agent", "name": "AI Agent", "desc": "智能体搭建、异常报告自动触达" },
         { "id": "aigc", "name": "AIGC 应用", "desc": "AI 素材生成、全流程AIGC开发" }
-      ]
-    },
-    {
-      "name": "财务产品",
-      "color": "#22d3ee",
-      "icon": "💰",
-      "skills": [
-        { "id": "billing", "name": "计费系统", "desc": "模块化计费、多场景配置、效能提升50%" },
-        { "id": "settlement", "name": "结算系统", "desc": "自动化结算、第三方支付对接" },
-        { "id": "cost-mgmt", "name": "成本管理", "desc": "履约成本、物流成本管报、动因分析" },
-        { "id": "pnl", "name": "损益分析", "desc": "损益测算、预警中心、预测准确率90%+" }
       ]
     },
     {
