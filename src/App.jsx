@@ -292,12 +292,19 @@ function useMermaid(containerRef) {
 // ==================== Right Panel: Project Detail Page ====================
 function renderDetail(detail) {
   if (!detail) return null;
-  const sectionHeaders = ["项目目标", "成功指标", "项目难点", "方案设计", "结果与影响", "项目成果", "系统架构", "结算金额预测流程", "结算金额路由", "结算币种路由"];
-  const parts = detail.split(/(```mermaid[\s\S]*?```)/g);
+  const sectionHeaders = ["项目目标", "成功指标", "项目难点", "方案设计", "结果与影响", "项目成果", "系统架构", "体系整体架构", "结算金额预测流程", "结算金额路由", "结算币种路由"];
+  const parts = detail.split(/(```mermaid[\s\S]*?```|!\[[^\]]*\]\([^)]+\))/g);
   return parts.map((part, i) => {
     const m = part.match(/^```mermaid\n?([\s\S]*?)```$/);
     if (m) {
       return <div key={i} className="mermaid-src" style={{ margin: "1.2rem 0", textAlign: "center" }}>{m[1].trim()}</div>;
+    }
+    const imgMatch = part.match(/^!\[([^\]]*)\]\(([^)]+)\)$/);
+    if (imgMatch) {
+      return <div key={i} style={{ margin: "1rem 0", borderRadius: "12px", overflow: "hidden", border: "1px solid var(--border)", background: "rgba(0,0,0,0.2)" }}>
+        <img src={imgMatch[2]} alt={imgMatch[1]} style={{ width: "100%", height: "auto", display: "block" }} loading="lazy" />
+        {imgMatch[1] && <div style={{ padding: "0.5rem 0.8rem", fontSize: "0.72rem", color: "var(--text-dim)", fontFamily: "var(--font-mono)", borderTop: "1px solid var(--border)" }}>{imgMatch[1]}</div>}
+      </div>;
     }
     if (!part.trim()) return null;
     // Split into paragraphs and style section headers
