@@ -364,11 +364,11 @@ function ProjectDetailPage({ project, company, onBack }) {
         <h2 style={{ fontFamily: "var(--font-mono)", fontSize: "1.4rem", color: "var(--text-bright)", marginBottom: "0.3rem" }}>
           {project.name}
         </h2>
-        <div style={{ fontFamily: "var(--font-mono)", fontSize: "0.82rem", color: project.color, marginBottom: "1rem", textShadow: `0 0 8px ${project.color}33` }}>
+        <div style={{ fontFamily: "var(--font-mono)", fontSize: "0.82rem", color: "#a855f7", marginBottom: "1rem", textShadow: `0 0 8px ${project.color}33` }}>
           {project.subtitle}
         </div>
         <div style={{ display: "flex", gap: "0.4rem", flexWrap: "wrap" }}>
-          {project.tags?.map(t => <span key={t} className="tag" style={{ background: `${project.color}0d`, color: #ff9457, borderColor: `${project.color}18` }}>{t}</span>)}
+          {project.tags?.map(t => <span key={t} className="tag" style={{ background: `${project.color}0d`, color: project.color, borderColor: `${project.color}18` }}>{t}</span>)}
         </div>
       </div>
 
@@ -384,6 +384,34 @@ function ProjectDetailPage({ project, company, onBack }) {
           {project.description}
         </div>
       </div>
+
+      {/* Images */}
+      {project.images && project.images.length > 0 && (
+        <div style={{
+          display: "grid", gridTemplateColumns: project.images.length === 1 ? "1fr" : "repeat(2, 1fr)",
+          gap: "1rem", marginBottom: "1.5rem",
+        }}>
+          {project.images.map((img, idx) => (
+            <div key={idx} style={{
+              borderRadius: "12px", overflow: "hidden",
+              border: "1px solid var(--border)",
+              background: "rgba(0,0,0,0.2)",
+            }}>
+              <img src={img.src || img} alt={img.alt || project.name}
+                style={{ width: "100%", height: "auto", display: "block" }}
+                loading="lazy"
+              />
+              {img.caption && (
+                <div style={{
+                  padding: "0.5rem 0.8rem", fontSize: "0.72rem",
+                  color: "var(--text-dim)", fontFamily: "var(--font-mono)",
+                  borderTop: "1px solid var(--border)",
+                }}>{img.caption}</div>
+              )}
+            </div>
+          ))}
+        </div>
+      )}
 
       {/* Detail area — supports mermaid diagrams */}
       <div ref={detailRef} style={{
@@ -462,7 +490,7 @@ function StandaloneProjects() {
                 <span key={t} style={{
                   fontSize: "0.65rem", fontFamily: "var(--font-mono)",
                   padding: "0.15rem 0.4rem", borderRadius: "3px",
-                  background: "rgba(168,85,247,0.08)", color: "#ff9457",
+                  background: "rgba(168,85,247,0.08)", color: "#a855f7",
                   border: "1px solid rgba(168,85,247,0.15)",
                 }}>{t}</span>
               ))}
