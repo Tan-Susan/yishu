@@ -237,7 +237,19 @@ function ExperienceList({ expanded, setExpanded, onProjectClick }) {
                         onMouseLeave={e => { e.currentTarget.style.borderColor = `${proj.color}12`; e.currentTarget.style.background = "rgba(255,255,255,0.015)"; e.currentTarget.style.transform = "translateY(0)"; }}
                       >
                         <div style={{ fontFamily: "var(--font-mono)", fontSize: "0.82rem", color: "var(--text-bright)", marginBottom: "0.2rem" }}>{proj.name}</div>
-                        <div style={{ fontSize: "0.7rem", color: proj.color, fontFamily: "var(--font-mono)" }}>{proj.subtitle}</div>
+                        <div style={{ fontSize: "0.7rem", color: "#a855f7", fontFamily: "var(--font-mono)" }}>{proj.subtitle}</div>
+                        {proj.tags && proj.tags.length > 0 && (
+                          <div style={{ display: "flex", gap: "0.3rem", flexWrap: "wrap", marginTop: "0.4rem" }}>
+                            {proj.tags.map(t => (
+                              <span key={t} style={{
+                                fontSize: "0.6rem", fontFamily: "var(--font-mono)",
+                                padding: "0.1rem 0.35rem", borderRadius: "3px",
+                                background: "rgba(168,85,247,0.08)", color: "#a855f7",
+                                border: "1px solid rgba(168,85,247,0.15)",
+                              }}>{t}</span>
+                            ))}
+                          </div>
+                        )}
                       </div>
                     ))}
                   </div>
@@ -462,9 +474,21 @@ function StandaloneProjects() {
           <h3 style={{ fontFamily: "var(--font-mono)", fontSize: "1rem", color: "var(--text-bright)", marginBottom: "0.3rem" }}>
             {proj.name}
           </h3>
-          <div style={{ fontSize: "0.78rem", color: proj.color, marginBottom: "0.8rem", fontFamily: "var(--font-mono)" }}>
+          <div style={{ fontSize: "0.78rem", color: "#a855f7", marginBottom: "0.8rem", fontFamily: "var(--font-mono)" }}>
             {proj.subtitle}
           </div>
+          {proj.tags && proj.tags.length > 0 && (
+            <div style={{ display: "flex", gap: "0.4rem", flexWrap: "wrap", marginBottom: "0.8rem" }}>
+              {proj.tags.map(t => (
+                <span key={t} style={{
+                  fontSize: "0.65rem", fontFamily: "var(--font-mono)",
+                  padding: "0.15rem 0.4rem", borderRadius: "3px",
+                  background: "rgba(168,85,247,0.08)", color: "#a855f7",
+                  border: "1px solid rgba(168,85,247,0.15)",
+                }}>{t}</span>
+              ))}
+            </div>
+          )}
           <ul style={{ listStyle: "none", padding: 0, margin: "0 0 1rem" }}>
             {proj.highlights.map((h, j) => (
               <li key={j} style={{
