@@ -385,34 +385,6 @@ function ProjectDetailPage({ project, company, onBack }) {
         </div>
       </div>
 
-      {/* Images */}
-      {project.images && project.images.length > 0 && (
-        <div style={{
-          display: "grid", gridTemplateColumns: project.images.length === 1 ? "1fr" : "repeat(2, 1fr)",
-          gap: "1rem", marginBottom: "1.5rem",
-        }}>
-          {project.images.map((img, idx) => (
-            <div key={idx} style={{
-              borderRadius: "12px", overflow: "hidden",
-              border: "1px solid var(--border)",
-              background: "rgba(0,0,0,0.2)",
-            }}>
-              <img src={img.src || img} alt={img.alt || project.name}
-                style={{ width: "100%", height: "auto", display: "block" }}
-                loading="lazy"
-              />
-              {img.caption && (
-                <div style={{
-                  padding: "0.5rem 0.8rem", fontSize: "0.72rem",
-                  color: "var(--text-dim)", fontFamily: "var(--font-mono)",
-                  borderTop: "1px solid var(--border)",
-                }}>{img.caption}</div>
-              )}
-            </div>
-          ))}
-        </div>
-      )}
-
       {/* Detail area — supports mermaid diagrams */}
       <div ref={detailRef} style={{
         background: "rgba(10,10,15,0.7)", backdropFilter: "blur(12px)", borderRadius: "14px",
