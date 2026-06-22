@@ -62,7 +62,7 @@ function ProfileCard() {
     <div style={{
       background: "rgba(255,255,255,0.025)", backdropFilter: "blur(20px)",
       border: "1px solid rgba(0,212,255,0.1)", borderRadius: "20px",
-      padding: "2.5rem 2rem", textAlign: "center", position: "relative", overflow: "hidden",
+      padding: "2.5rem 2rem 1.5rem", textAlign: "center", position: "relative", overflow: "hidden",
     }}>
       {/* Subtle scan lines */}
       <div style={{
