@@ -244,7 +244,7 @@ function ExperienceList({ expanded, setExpanded, onProjectClick }) {
                               <span key={t} style={{
                                 fontSize: "0.6rem", fontFamily: "var(--font-mono)",
                                 padding: "0.1rem 0.35rem", borderRadius: "3px",
-                                background: "rgba(168,85,247,0.08)", color: "#a855f7",
+                                background: "rgba(168,85,247,0.08)", color: "#ff9457",
                                 border: "1px solid rgba(168,85,247,0.15)",
                               }}>{t}</span>
                             ))}
