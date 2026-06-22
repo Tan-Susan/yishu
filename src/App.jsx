@@ -60,7 +60,7 @@ function Counter({ target, suffix = "" }) {
 function ProfileCard() {
   return (
     <div style={{
-      background: "rgba(255,255,255,0.025)", backdropFilter: "blur(20px)",
+      background: "rgba(10,10,15,0.7)", backdropFilter: "blur(20px)",
       border: "1px solid rgba(0,212,255,0.1)", borderRadius: "20px",
       padding: "2.5rem 2rem 1.5rem", textAlign: "center", position: "relative", overflow: "hidden",
     }}>
@@ -144,7 +144,7 @@ function SkillTree() {
       <div style={{ display: "flex", flexDirection: "column", gap: "0.8rem" }}>
         {skillsData.branches.map((branch) => (
           <div key={branch.name} style={{
-            background: "rgba(255,255,255,0.02)", borderRadius: "14px",
+            background: "rgba(10,10,15,0.65)", backdropFilter: "blur(12px)", borderRadius: "14px",
             border: `1px solid ${branch.color}15`, padding: "1rem 1.2rem",
           }}>
             <div style={{
@@ -200,7 +200,7 @@ function ExperienceList({ expanded, setExpanded, onProjectClick }) {
             boxShadow: `0 0 10px ${exp.color}44`,
           }} />
           <div onClick={() => setExpanded(expanded === i ? -1 : i)} style={{
-            background: expanded === i ? "rgba(255,255,255,0.045)" : "rgba(255,255,255,0.02)",
+            background: expanded === i ? "rgba(10,10,15,0.75)" : "rgba(10,10,15,0.65)", backdropFilter: "blur(12px)",
             borderRadius: "14px", border: `1px solid ${expanded === i ? exp.color + "40" : exp.color + "15"}`,
             padding: "1.2rem 1.5rem", cursor: "pointer", transition: "all 0.35s ease",
             boxShadow: expanded === i ? `0 0 20px ${exp.color}08` : "none",
@@ -229,12 +229,12 @@ function ExperienceList({ expanded, setExpanded, onProjectClick }) {
                     {exp.projects.map((proj, pi) => (
                       <div key={pi} onClick={(e) => { e.stopPropagation(); onProjectClick(proj, exp); }}
                         style={{
-                          background: "rgba(255,255,255,0.015)", borderRadius: "10px",
+                          background: "rgba(10,10,15,0.5)", borderRadius: "10px",
                           border: `1px solid ${proj.color}12`, padding: "0.75rem 1rem",
                           cursor: "pointer", transition: "all 0.3s ease",
                         }}
-                        onMouseEnter={e => { e.currentTarget.style.borderColor = `${proj.color}35`; e.currentTarget.style.background = "rgba(255,255,255,0.035)"; e.currentTarget.style.transform = "translateY(-1px)"; }}
-                        onMouseLeave={e => { e.currentTarget.style.borderColor = `${proj.color}12`; e.currentTarget.style.background = "rgba(255,255,255,0.015)"; e.currentTarget.style.transform = "translateY(0)"; }}
+                        onMouseEnter={e => { e.currentTarget.style.borderColor = `${proj.color}35`; e.currentTarget.style.background = "rgba(10,10,15,0.7)"; e.currentTarget.style.transform = "translateY(-1px)"; }}
+                        onMouseLeave={e => { e.currentTarget.style.borderColor = `${proj.color}12`; e.currentTarget.style.background = "rgba(10,10,15,0.5)"; e.currentTarget.style.transform = "translateY(0)"; }}
                       >
                         <div style={{ fontFamily: "var(--font-mono)", fontSize: "0.82rem", color: "var(--text-bright)", marginBottom: "0.2rem" }}>{proj.name}</div>
                         <div style={{ fontSize: "0.7rem", color: "#a855f7", fontFamily: "var(--font-mono)" }}>{proj.subtitle}</div>
@@ -348,7 +348,7 @@ function ProjectDetailPage({ project, company, onBack }) {
 
       {/* Project header */}
       <div style={{
-        background: "rgba(255,255,255,0.02)", borderRadius: "16px",
+        background: "rgba(10,10,15,0.7)", backdropFilter: "blur(12px)", borderRadius: "16px",
         border: `1px solid ${project.color}18`, padding: "2rem", marginBottom: "1.5rem",
       }}>
         <div style={{ fontSize: "0.72rem", color: "var(--text-faint)", fontFamily: "var(--font-mono)", marginBottom: "0.5rem" }}>
@@ -367,7 +367,7 @@ function ProjectDetailPage({ project, company, onBack }) {
 
       {/* Description */}
       <div style={{
-        background: "rgba(255,255,255,0.02)", borderRadius: "14px",
+        background: "rgba(10,10,15,0.7)", backdropFilter: "blur(12px)", borderRadius: "14px",
         border: "1px solid var(--border)", padding: "1.5rem 2rem", marginBottom: "1.5rem",
       }}>
         <div style={{ fontSize: "0.72rem", color: "var(--text-faint)", marginBottom: "0.8rem", fontFamily: "var(--font-mono)" }}>
@@ -408,7 +408,7 @@ function ProjectDetailPage({ project, company, onBack }) {
 
       {/* Detail area — supports mermaid diagrams */}
       <div ref={detailRef} style={{
-        background: "rgba(255,255,255,0.02)", borderRadius: "14px",
+        background: "rgba(10,10,15,0.7)", backdropFilter: "blur(12px)", borderRadius: "14px",
         border: "1px solid var(--border)", padding: "1.5rem 2rem",
         minHeight: "200px",
       }}>
@@ -464,12 +464,12 @@ function StandaloneProjects() {
 
       {projects.map((proj, i) => (
         <div key={i} style={{
-          background: "rgba(255,255,255,0.02)", borderRadius: "14px",
+          background: "rgba(10,10,15,0.7)", backdropFilter: "blur(12px)", borderRadius: "14px",
           border: `1px solid ${proj.color}12`, padding: "1.5rem", transition: "all 0.3s ease",
           marginBottom: "1rem",
         }}
-          onMouseEnter={e => { e.currentTarget.style.borderColor = `${proj.color}35`; e.currentTarget.style.transform = "translateY(-2px)"; e.currentTarget.style.boxShadow = `0 6px 24px ${proj.color}08`; }}
-          onMouseLeave={e => { e.currentTarget.style.borderColor = `${proj.color}12`; e.currentTarget.style.transform = "translateY(0)"; e.currentTarget.style.boxShadow = "none"; }}
+          onMouseEnter={e => { e.currentTarget.style.borderColor = `${proj.color}35`; e.currentTarget.style.background = "rgba(10,10,15,0.8)"; e.currentTarget.style.transform = "translateY(-2px)"; e.currentTarget.style.boxShadow = `0 6px 24px ${proj.color}08`; }}
+          onMouseLeave={e => { e.currentTarget.style.borderColor = `${proj.color}12`; e.currentTarget.style.background = "rgba(10,10,15,0.7)"; e.currentTarget.style.transform = "translateY(0)"; e.currentTarget.style.boxShadow = "none"; }}
         >
           <h3 style={{ fontFamily: "var(--font-mono)", fontSize: "1rem", color: "var(--text-bright)", marginBottom: "0.3rem" }}>
             {proj.name}
@@ -530,8 +530,8 @@ export default function App() {
 
   return (
     <div style={{
-      background: "var(--bg)", color: "var(--text)", minHeight: "100vh",
-      fontFamily: "var(--font-sans)", position: "relative",
+      background: "transparent", color: "var(--text)", minHeight: "100vh",
+      fontFamily: "var(--font-sans)", position: "relative", zIndex: 1,
     }}>
       <style>{`
         @keyframes blink { 50% { opacity: 0; } }
