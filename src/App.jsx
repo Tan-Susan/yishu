@@ -516,7 +516,7 @@ function StandaloneProjects() {
           {proj.images && proj.images.length > 0 && (
             <div style={{ marginTop: "1rem" }}>
               {proj.images.map((img, idx) => (
-                <div key={idx} style={{ borderRadius: "12px", overflow: "hidden", marginBottom: idx < proj.images.length - 1 ? "0.8rem" : 0 }}>
+                <div key={idx} style={{overflow: "hidden", marginBottom: idx < proj.images.length - 1 ? "0.8rem" : 0 }}>
                   <img src={img.src || img} alt={img.alt || proj.name} style={{ width: "10%", height: "auto", display: "block" }} loading="lazy" />
                 </div>
               ))}
