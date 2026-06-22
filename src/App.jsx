@@ -280,7 +280,7 @@ function useMermaid(containerRef) {
 // ==================== Right Panel: Project Detail Page ====================
 function renderDetail(detail) {
   if (!detail) return null;
-  const sectionHeaders = ["项目目标", "成功指标", "项目难点", "方案设计", "结果与影响", "项目成果", "系统架构"];
+  const sectionHeaders = ["项目目标", "成功指标", "项目难点", "方案设计", "结果与影响", "项目成果", "系统架构", "结算金额预测流程", "结算金额路由"];
   const parts = detail.split(/(```mermaid[\s\S]*?```)/g);
   return parts.map((part, i) => {
     const m = part.match(/^```mermaid\n?([\s\S]*?)```$/);
@@ -429,10 +429,7 @@ function Experience({ onProjectClick }) {
       <h2 style={{
         fontFamily: "var(--font-mono)", fontSize: "1.3rem", color: "var(--text-bright)",
         marginBottom: "0.4rem",
-      }}><span className="neon-purple">职业副本</span></h2>
-      <p style={{ color: "var(--text-dim)", fontSize: "0.78rem", marginBottom: "2rem" }}>
-        点击展开查看成就，点击项目进入详情
-      </p>
+      }}><span className="neon-purple">工作经历</span></h2>
       <ExperienceList expanded={expanded} setExpanded={setExpanded} onProjectClick={onProjectClick} />
     </section>
   );
