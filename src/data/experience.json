@@ -15,7 +15,7 @@
           "subtitle": "从定制化开发到0代码灵活配置",
           "color": "#ee4d2d",
           "description": "解决新计费模式上线慢、开发依赖重、验收流程长的问题，让计费能力从「定制化开发」变成「0代码灵活配置」。",
-          "tags": ["系统设计", "配置化", "计费"],
+          "tags": ["系统设计", "配置化", "B端产品"],
           "images": [],
           "detail": "项目目标\n解决新计费模式上线慢、开发依赖重、验收流程长的问题，让计费能力从「定制化开发」变成「0代码灵活配置」。\n\n项目难点\n1. 计费场景多而分散，单据、因子、公式之间关系复杂；不同国家线计费规则差异大，开发耗时长\n2. 技术抗拒做模块化，认为费工时，ROI小\n\n项目成果\n把原来 2–3 个月的开发+验证周期压缩到约 2 周完成数据引入与验证，明显提升业务侧和研发侧效率，也降低了后续计费扩展成本。\n\n系统架构\n\n```mermaid\nflowchart TD\n    subgraph PLAN[\"📋 费用计划\"]\n        direction TB\n        P1[\"⏰ 费用周期\\n月度/季度/自定义周期\"]\n        P2[\"🏪 适用商家\\n按商家ID/等级/地区筛选\"]\n        P3[\"🎁 新客折扣\\n首月/首季度优惠费率\"]\n        P4[\"📦 收费范围\\n由多个费用项构成\"]\n    end\n\n    subgraph ITEM[\"🔧 费用项配置（运营自定义组合）\"]\n        direction TB\n        I1[\"📄 计费场景\\n履约单 / 入库单 / 退供单\\n调拨单 / 增值服务单 / 仓储\"]\n        I2[\"🎯 计费条件\\n特定仓库 / 特定类目\\n特定SKU组 / 订单来源\"]\n        I3[\"📐 计费因子\\n重量 / 体积 / 三边之和\\n最长边 / 包裹内个数\"]\n        I4[\"🧮 计费公式\\n每单位固定费用\\n每单位阶梯费用\\n固定周期收费\"]\n    end\n\n    subgraph EXEC[\"⚡ 计费执行与输出\"]\n        direction TB\n        E1[\"🔄 费用周期运行\\n按配置自动计费\"]\n        E2[\"📊 生成计费报告\\n费用明细 + 汇总\"]\n        E3[\"📧 发送至商家邮箱\\n供商家确认\"]\n    end\n\n    P4 --> ITEM\n    I1 --> I2 --> I3 --> I4\n    P1 --> E1\n    P2 --> E1\n    P3 --> E1\n    I4 --> E1\n    E1 --> E2 --> E3\n```"
         },
@@ -33,7 +33,7 @@
           "subtitle": "有效提升仓网效率，优化成本10000+BRL/日",
           "color": "#a855f7",
           "description": "牵头优化商城、履约等团队优化开票顺序，支持高效换仓履约，大幅降低物流成本支出。",
-          "tags": ["领导力", "系统流程串联", "国际化"],
+          "tags": ["领导力", "系统流程设计", "国际化"],
           "images": [],
           "detail": "以下是优化前后的巴西开票全流程对比。\n\n```mermaid\nsequenceDiagram\n    participant Listing as Listing\n    participant CS as C&S\n    participant Fin as Finance\n    participant ISC as ISC\n    participant GW as 巴西Gateway\n    participant SF as SEFAZ\n    participant OMS as OMS\n    participant WMS as WMS\n\n    Listing->>Listing: 下单，扣减订单仓库库存\n    Listing->>CS: 商城订单\n    CS->>Fin: 携带订单信息请求开票\n    Fin->>ISC: 占用发票库存\n    ISC-->>Fin: 占用成功\n    Fin->>Listing: 请求商家&SKU信息\n    Listing-->>Fin: 返回信息\n    Fin->>GW: 发送NFe开票请求\n    GW->>SF: 转发至巴西政府\n    SF-->>GW: 返回发票结果\n    GW-->>Fin: 返回开票成功\n    Fin-->>CS: 开票成功\n    CS->>OMS: 通知安排发货\n    OMS->>WMS: 占用实物库存\n    WMS->>ISC: 占用逻辑库存\n    ISC-->>WMS: 占用成功\n    WMS->>WMS: 占用实物库存，开始打包\n    WMS-->>OMS: 完成发货\n```\n\n```mermaid\nsequenceDiagram\n    participant Listing as Listing\n    participant CS as C&S\n    participant Fin as Finance\n    participant ISC as ISC\n    participant GW as 巴西Gateway\n    participant SF as SEFAZ\n    participant OMS as OMS\n    participant WMS as WMS\n\n    Listing->>Listing: 下单，扣减订单仓库库存\n    Listing->>CS: 商城订单\n    CS->>OMS: 通知安排发货\n    OMS->>WMS: 冻结实物库存\n    WMS->>ISC: 冻结逻辑库存\n    ISC-->>WMS: 冻结成功\n    OMS->>Listing: 通知最新履约仓库\n    Listing->>Listing: 释放订单仓库库存，转换仓库库存\n    OMS->>Fin: 携带订单+履约仓库信息请求开票\n    Fin->>ISC: 占用发票库存\n    ISC-->>Fin: 占用成功\n    Fin->>Listing: 请求商家&SKU信息\n    Listing-->>Fin: 返回信息\n    Fin->>GW: 发送NFe开票请求\n    GW->>SF: 转发至巴西政府\n    SF-->>GW: 返回发票结果\n    GW-->>Fin: 返回开票成功\n    Fin-->>OMS: 开票成功\n    OMS->>WMS: 冻结实物库存转为占用\n    WMS->>ISC: 冻结逻辑库存转为占用\n    ISC-->>WMS: 占用成功\n    WMS-->>OMS: 占用成功\n    WMS->>WMS: 占用实物库存，开始打包\n    WMS-->>OMS: 完成发货\n```"
         },
