@@ -368,7 +368,7 @@ function ProjectDetailPage({ project, company, onBack }) {
           {project.subtitle}
         </div>
         <div style={{ display: "flex", gap: "0.4rem", flexWrap: "wrap" }}>
-          {project.tags?.map(t => <span key={t} className="tag" style={{ background: `${project.color}0d`, color: project.color, borderColor: `${project.color}18` }}>{t}</span>)}
+          {project.tags?.map(t => <span key={t} className="tag" style={{ background: `${project.color}0d`, color: #ff9457, borderColor: `${project.color}18` }}>{t}</span>)}
         </div>
       </div>
 
@@ -462,7 +462,7 @@ function StandaloneProjects() {
                 <span key={t} style={{
                   fontSize: "0.65rem", fontFamily: "var(--font-mono)",
                   padding: "0.15rem 0.4rem", borderRadius: "3px",
-                  background: "rgba(168,85,247,0.08)", color: "#a855f7",
+                  background: "rgba(168,85,247,0.08)", color: "#ff9457",
                   border: "1px solid rgba(168,85,247,0.15)",
                 }}>{t}</span>
               ))}
